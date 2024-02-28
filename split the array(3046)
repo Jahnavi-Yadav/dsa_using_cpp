@@ -1,0 +1,30 @@
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+class Solution {
+public:
+    bool isPossibleToSplit(vector<int>& nums) {
+        unordered_map<int, int> count;
+        int consecutive_count = 1;
+        int prev = -1; // Assuming nums are non-negative
+        for (int n : nums) {
+            if (n == prev) {
+                consecutive_count++;
+            } else {
+                if (consecutive_count > 2) {
+                    return false;
+                }
+                consecutive_count = 1;
+                prev = n;
+            }
+            count[n] = 1 + count[n];
+        }
+        for (auto& pair : count) {
+            if (pair.second > 2) {
+                return false;
+            }
+        }
+        return true;
+    }
+};
