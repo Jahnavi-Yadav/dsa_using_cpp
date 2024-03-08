@@ -1,0 +1,18 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <map>
+#include <string>
+using namespace std;
+int main() {
+    map<string,int>marksmap;
+    marksmap["a"]=98;
+    marksmap["b"]=56;
+    marksmap["c"]=45;
+    marksmap.insert({"d",42});
+    map<string,int> :: iterator iter;
+    for(iter=marksmap.begin();iter!=marksmap.end();iter++){
+        cout<<(*iter).first<<" "<<(*iter).second<<"\n";
+    }
+    cout<<"size of marks map"<<marksmap.size()<<endl;
+    return 0;
+}
