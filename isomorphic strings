@@ -1,0 +1,30 @@
+#include <unordered_map>
+#include <string>
+
+using namespace std;
+
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+        unordered_map<char, char> charmap;
+        for (int i = 0; i < s.length(); i++) {
+            char orChar = s[i];
+            char repChar = t[i];
+            if (charmap.find(orChar) == charmap.end()) {
+                if (charmap.end() == find_if(charmap.begin(), charmap.end(), 
+                    [&](const pair<char, char>& p) { return p.second == repChar; }))
+                    charmap[orChar] = repChar;
+                else
+                    return false;
+            } else {
+                char mappedCharacter = charmap[orChar];
+                if (mappedCharacter != repChar)
+                    return false;
+            }
+        }
+        return true;
+    }
+};
