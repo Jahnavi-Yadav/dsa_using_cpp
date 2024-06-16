@@ -1,0 +1,40 @@
+Given a number N. Count the number of digits in N which evenly divide N.
+
+Note :- Evenly divides means whether N is divisible by a digit i.e. leaves a remainder 0 when divided.
+//{ Driver Code Starts
+#include<bits/stdc++.h> 
+using namespace std;
+
+// } Driver Code Ends
+class Solution{
+public:
+    int evenlyDivides(int N){
+        int count=0;
+        int on=N;
+        while(on>0){
+            int l = on % 10;
+            
+            on=on/10;
+            if(l!=0 && N%l==0)
+                count++;
+            //N=N/10;
+        }
+        return count;
+    }
+};
+
+//{ Driver Code Starts.
+int main() 
+{ 
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int N;
+        cin>>N;
+        Solution ob;
+        cout << ob.evenlyDivides(N) << endl;
+    }
+    return 0; 
+}
+// } Driver Code Endsn
